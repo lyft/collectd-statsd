@@ -22,7 +22,7 @@ A collectd plugin to write metrics to statsd.
 ######################
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
-from builtins import int
+from builtins import (dict, int, open, filter, zip)
 
 #########################
 # Third Party Libraries #
