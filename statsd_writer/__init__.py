@@ -20,7 +20,13 @@ A collectd plugin to write metrics to statsd.
 ######################
 # Standard Libraries #
 ######################
-from __future__ import absolute_import
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+from builtins import (
+         bytes, dict, int, list, object, range, str,
+         ascii, chr, hex, input, next, oct, open,
+         pow, round, super,
+         filter, map, zip)
 
 #########################
 # Third Party Libraries #
@@ -194,13 +200,7 @@ def write_stats(values, types, base_path=None, client=None):
     Actually write the stats to statsd!
     """
     for idx, value in enumerate(values.values):
-        # If the value is an int, convert it to a long. This is necessary
-        # because the statsd library we are using uses the %s string
-        # iterpolation operator to format the string being sent to
-        # statsd. If the value is a large enough int (say, for example, the
-        # free disk space on a graphite box), %s will format it using
-        # exponential notation; if it is a long, it will not.
-        value = long(value)
+        value = int(value)
 
         if base_path is None:
             base_path = stats_path(values)
