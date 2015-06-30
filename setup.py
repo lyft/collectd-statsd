@@ -17,5 +17,9 @@ setup(name='collectd-statsd',
       version='0.1.0',
       description='collectd plugin to write to a statsd daemon',
       url='https://github.com/lyft/collectd-statsd',
+      license='Apache License 2.0',
       packages=find_packages(),
+      install_requires=[
+          'statsd',
+      ],
       )
