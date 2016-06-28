@@ -196,7 +196,7 @@ def write_stats(values, types, base_path=None, client=None):
     Actually write the stats to statsd!
     """
     for idx, value in enumerate(values.values):
-        value = int(value)
+        value = float(value)
 
         if base_path is None:
             base_path = stats_path(values)
