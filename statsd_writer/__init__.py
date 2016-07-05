@@ -120,7 +120,10 @@ def configure(config, data=None):
         # We've sanity-checked, so now we can use the value
         data['conf'][key] = item.values[0]
 
-    data['types'] = parse_types(data['conf'].pop('typesdb'))
+    types = {}
+    for db_path in data['conf'].pop('typesdb').split():
+        types.update(parse_types(db_path))
+    data['types'] = types
     collectd.register_init(initialize, data=data)
 
 
