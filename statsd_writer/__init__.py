@@ -147,6 +147,8 @@ def stats_path(values):
     # The filter() call here will remove any None values, so when we join()
     # these to get our stat path, only valid components will be joined.
     return '.'.join(filter(None, [
+	# hostname
+	values.host.replace('.','_'),
         # plugin name
         values.plugin,
         # plugin instance, if any
